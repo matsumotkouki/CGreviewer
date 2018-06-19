@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>提出</title>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+</head>
+
+<body>
+<h1>作品提出</h1>
+<form id="my_form">
+	<table border = 2>
+		<tr>
+			<th>jsonファイル : </th>
+			<td><input type="file" name="up_file[]"></td>
+		</tr>
+		<tr>
+			<th>サムネイル : </th>
+			<td><input type="file" name="up_file[]"></td>
+		</tr>
+	</table>
+    <button type="button" onclick="file_upload()">アップロード</button>
+</form>
+<script type="text/javascript">
+function file_upload()
+{
+    var formdata1 = new FormData($('#my_form').get(0));
+    $.ajax({
+        url  : "./assets/php/test2_file_post.php",
+        type : "POST",
+        data : formdata1,
+        cache       : false,
+        contentType : false,
+        processData : false,
+        dataType    : "html"
+    })
+    .done(function(data, textStatus, jqXHR){
+        alert(data);
+    })
+    .fail(function(jqXHR, textStatus, errorThrown){
+        alert("fail");
+    });
+}
+</script>
+<a href="./test2_file_list.html">リストページ</a>
+</body>
+</html>

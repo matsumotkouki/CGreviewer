@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>学習者登録</title>
+</head>
+
+<body>
+<h1>学習者登録</h1>
+<form action="./regist.php" method="post">
+  学生番号：<br />
+  <input type="text" name="num" maxlength="7" pattern="^[0-9A-Za-z]+$"　value="" /><br />
+  パスワード：<br />
+  <input type="password" name="pass" maxlength="10"　pattern="^[0-9A-Za-z]+$" value=""><br />
+  <br />
+  <input type="submit" value="登録する" />
+</form>
+</body>
+
+</html>

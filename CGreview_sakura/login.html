@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+	<title>ログイン</title>
+</head>
+<body>
+	<h1>ログイン</h1>
+	<form method="post" action="login.php">
+		学生番号:<br>
+		<input type="text" name="num" maxlength="7" pattern="^[0-9A-Za-z]+$" >
+		<br>
+		パスワード:<br>
+		<input type="password" name="pass" maxlength="10" pattern="^[0-9A-Za-z]+$" >
+		<input type="submit" value="ログイン">
+	</form>
+</body>
+</html>
