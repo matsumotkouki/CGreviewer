@@ -44,11 +44,16 @@ session_start();
         </header>
         <div class="wrapper">
             <div class="work_info">
-                <div id = "work_title"><h1 id="work_read"></h1></div>
-                <h1>作品一覧</h1>
-            <div id="list_target"></div>
-                <h1>投稿したコメント一覧</h1>
-                <div id="comment_target"></div>
+                <div id = "work_title">
+                    <h1>作品一覧</h1><div id="list_target"></div>
+                    <script>
+                        if(<?php echo $_SESSION["NAME"] ;?>==1632999){
+                        <h1>他のユーザーの作品に投稿したコメント一覧</h1><div id="comment_target"></div>
+                        }
+                    </script>
+                        <h1>自分の作品に投稿されたコメント一覧</h1><div id=""></div>
+
+                </div>
             </div>
         </div>
         <script type="text/javascript">
