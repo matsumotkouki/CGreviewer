@@ -46,13 +46,8 @@ session_start();
             <div class="work_info">
                 <div id = "work_title">
                     <h1>作品一覧</h1><div id="list_target"></div>
-                    <script>
-                        if(<?php echo $_SESSION["NAME"] ;?>==1632999){
-                        <h1>他のユーザーの作品に投稿したコメント一覧</h1><div id="comment_target"></div>
-                        }
-                    </script>
-                        <h1>自分の作品に投稿されたコメント一覧</h1><div id=""></div>
-
+                    <h1>自分の作品に投稿されたコメント一覧</h1><div id="cache_comment"></div>
+                    <h1>他の作品に投稿したコメント一覧</h1><div id="comment_target"></div>
                 </div>
             </div>
         </div>
@@ -108,10 +103,6 @@ session_start();
                     var review = 1;
                     var stu_num = 2;
                     var id_work = 3;
-                    console.log(data_ha);
-                    console.log(data[date]);
-                    console.log(data[review]);
-                    console.log(data[stu_num]);
                     while(data_ha > 0){
                         if(data[stu_num] == urlPrm.sample1){
                         comment_create(data[date],data[review],data[stu_num],data[id_work]);
@@ -121,9 +112,6 @@ session_start();
                         review=review+4;
                         stu_num=stu_num+4;
                         id_work=id_work+4;
-                        console.log(data[date]);
-                        console.log(data[review]);
-                        console.log(data[stu_num]);
                     }
                 })
                 .fail(function(jqXHR, status, error){
@@ -136,5 +124,43 @@ session_start();
             });
         </script>
         <script type="text/javascript" src="comment_load.js"></script>
+        <script type="text/javascript">
+            window.addEventListener("load", function () {
+                $.ajax({
+                    type: 'POST',
+                    url: './assets/php/test2_myreview_get.php',
+                    dataType: "json",
+                })
+                .done(function(data, status, jqXHR){
+                    var len3 = 5;
+                    data_len3 = data.length;
+                    //表示される作品の個数
+                    data_ha3 = data_len3/len3;
+                    var date3 = 0;
+                    var review3 = 1;
+                    var con3 = 2;
+                    var work_na3 = 3;
+                    var stu_na3 =4;
+                    while(data_ha3 > 0){
+                        if(data[stu_na3] == urlPrm.sample1)
+                        comment_create2(data[date3],data[review3],data[con3],data[work_na3],data[stu_na3]);
+                        data_ha3 = data_ha3-1;
+                        date3 = date3+len3;
+                        review3=review3+len3;
+                        con3+=len3;
+                        work_na3+=len3;
+                        stu_na3+=len3;
+                    }
+                })
+                .fail(function(jqXHR, status, error){
+                    $("#list_data").html("エラーです");
+                    console.log(status);
+                })
+                .always(function(jqXHR, status){
+                    console.log(status);
+                });
+            });
+        </script>
+        <script type="text/javascript" src="comment_load2.js"></script>
     </body>
 </html>
