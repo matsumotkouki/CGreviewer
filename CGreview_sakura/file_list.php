@@ -37,6 +37,7 @@ session_start();
             </p>  <!-- ユーザー名をechoで表示 -->
             <h1>作品一覧</h1>
             <div id="list_target"></div>
+            <div id="work_name"></div>
         </div>
         <script type="text/javascript">
             window.addEventListener("load", function () {
