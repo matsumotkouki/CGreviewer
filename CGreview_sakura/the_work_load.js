@@ -2,10 +2,8 @@
 //作品表示？
 function list_create(model,img,name){
     var id1 = document.getElementById("list_target");
-    var id2 = document.getElementById("work_name");
 
     var div1 = document.createElement("div");
-    var div2 = document.createElement("div");
 
     var img1 = document.createElement("img"); 
     var a1 = document.createElement("a");
@@ -13,7 +11,6 @@ function list_create(model,img,name){
     var list_model = model;
     var list_user = name;
     id1.appendChild(div1); 
-    id2.appendChild(div2); 
 
     img1.src='./assets/work_files/'+img;
     img1.style.width="300px";
@@ -28,8 +25,8 @@ function list_create(model,img,name){
     //サムネイル表示
     div1.appendChild(img1); 
     //作品名表示
-    div2.appendChild(a1);
-    div2.appendChild(b1); 
+    div1.appendChild(a1);
+    div1.appendChild(b1); 
 
 }
 function thumbnail_create(thumbnail){
